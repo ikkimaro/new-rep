@@ -21,6 +21,7 @@ public class googleCalc {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
+
     }
 
     @Test
