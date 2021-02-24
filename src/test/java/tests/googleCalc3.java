@@ -30,21 +30,15 @@ public class googleCalc3 {
         driver.get("http://google.com");
         driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
 
-        //6
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[3]/td[3]/div/div")).click();
-
-        //деление
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[2]/td[4]/div/div")).click();
-
-        //0
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[1]/div/div")).click();
+        //sin button
+        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[1]/tbody/tr[2]/td[2]/div/div[1]")).click();
 
         //равно
         driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[3]/div/div")).click();
 
 
-        assertEquals("Infinity", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());
-        assertEquals("6 ÷ 0 =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText());
+        assertEquals("Error", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());
+        assertEquals("sin() =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText());
 
     }
     @AfterAll
