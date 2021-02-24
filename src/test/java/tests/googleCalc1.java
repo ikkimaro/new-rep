@@ -13,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class googleCalc {
+public class googleCalc1 {
 
     private static WebDriver driver;
 
