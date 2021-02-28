@@ -43,8 +43,8 @@ public class googleCalc3 {
         buttons.equalsButton.click();
 
 
-        assertEquals("Error", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());
-        assertEquals("sin() =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText());
+        assertEquals("Error", driver.findElement(By.cssSelector ("div[jsname='zLiRgc']")).getText());
+        assertEquals("sin() =", driver.findElement(By.cssSelector("div[jsname='VkJw6']")).getText());
 
     }
     @AfterAll

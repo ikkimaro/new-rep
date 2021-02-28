@@ -64,8 +64,8 @@ public class googleCalc1 {
 
         buttons.equalsButton.click();
 
-        assertEquals(1, driver.findElements(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).size());
-        assertEquals("(1 + 2) × 3 - 40 ÷ 5 =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText() );
+        assertEquals(1, driver.findElements(By.cssSelector ("div[jsname='zLiRgc']")).size());
+        assertEquals("(1 + 2) × 3 - 40 ÷ 5 =", driver.findElement(By.cssSelector("div[jsname='VkJw6']")).getText() );
 
     }
     @AfterAll

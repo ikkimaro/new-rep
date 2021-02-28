@@ -50,8 +50,8 @@ public class googleCalc2 {
         buttons.equalsButton.click();
 
 
-        assertEquals("Infinity", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());
-        assertEquals("6 ÷ 0 =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText());
+        assertEquals("Infinity", driver.findElement(By.cssSelector ("div[jsname='zLiRgc']")).getText());
+        assertEquals("6 ÷ 0 =", driver.findElement(By.cssSelector("div[jsname='VkJw6']")).getText());
 
     }
     @AfterAll
