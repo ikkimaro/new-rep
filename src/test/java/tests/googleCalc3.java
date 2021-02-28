@@ -31,10 +31,10 @@ public class googleCalc3 {
         driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
 
         //sin button
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[1]/tbody/tr[2]/td[2]/div/div[1]")).click();
+        driver.findElement(By.xpath ("//div[@jsname='aN1RFf']")).click();
 
         //равно
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[3]/div/div")).click();
+        driver.findElement(By.xpath ("//div[@jsname='Pt8tGc']")).click();
 
 
         assertEquals("Error", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());
