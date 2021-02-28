@@ -8,12 +8,17 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.CalcButtons;
+import pages.SearchPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class googleCalc3 {
 
     private static WebDriver driver;
+    private static SearchPage searchPage;
+    private static CalcButtons buttons;
+
 
     @BeforeAll
    public static void init() {
@@ -21,20 +26,21 @@ public class googleCalc3 {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
-
+        searchPage = new SearchPage(driver);
+        buttons = new CalcButtons(driver);
     }
 
     @Test
     public void test1() {
 
         driver.get("http://google.com");
-        driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
+        searchPage.search("Calculator");
 
         //sin button
-        driver.findElement(By.xpath ("//div[@jsname='aN1RFf']")).click();
+        buttons.sinButton.click();
 
         //равно
-        driver.findElement(By.xpath ("//div[@jsname='Pt8tGc']")).click();
+        buttons.equalsButton.click();
 
 
         assertEquals("Error", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());

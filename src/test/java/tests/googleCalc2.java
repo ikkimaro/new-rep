@@ -9,12 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.CalcButtons;
+import pages.SearchPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class googleCalc2 {
 
     private static WebDriver driver;
+    private static SearchPage searchPage;
+    private static CalcButtons buttons;
 
     @BeforeAll
    public static void init() {
@@ -22,6 +26,8 @@ public class googleCalc2 {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
+        searchPage = new SearchPage(driver);
+        buttons = new CalcButtons(driver);
 
     }
 
@@ -29,19 +35,19 @@ public class googleCalc2 {
     public void test1() {
 
         driver.get("http://google.com");
-        driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
+        searchPage.search("Calculator");
 
         //6
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[3]/td[3]/div/div")).click();
+        buttons.Button6.click();
 
         //деление
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[2]/td[4]/div/div")).click();
+        buttons.divideButton.click();
 
         //0
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[1]/div/div")).click();
+        buttons.Button0.click();
 
         //равно
-        driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[3]/div/div")).click();
+        buttons.equalsButton.click();
 
 
         assertEquals("Infinity", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).getText());

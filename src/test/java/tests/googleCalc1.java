@@ -10,12 +10,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import pages.CalcButtons;
+import pages.SearchPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class googleCalc1 {
 
     private static WebDriver driver;
+    private static SearchPage searchPage;
+    private static CalcButtons buttons;
 
     @BeforeAll
    public static void init() {
@@ -23,6 +27,8 @@ public class googleCalc1 {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
+        searchPage = new SearchPage(driver);
+        buttons = new CalcButtons(driver);
 
     }
 
@@ -30,46 +36,33 @@ public class googleCalc1 {
     public void test1() {
 
         driver.get("http://google.com");
-        driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
+        searchPage.search("Calculator");
 
-        WebElement skobka1 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[1]/td[1]/div/div"));
-        skobka1.click();
+        buttons.bracket1.click();
 
-        WebElement element1 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[4]/td[1]/div/div"));
-        element1.click();
+        buttons.Button1.click();
 
-        WebElement plus = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[4]/div/div"));
-        plus.click();
+        buttons.plusButton.click();
 
-        WebElement element2 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[4]/td[2]/div/div"));
-        element2.click();
+        buttons.Button2.click();
 
-        WebElement skobka2 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[1]/td[2]/div/div"));
-        skobka2.click();
+        buttons.bracket2.click();
 
-        WebElement umnoj = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[3]/td[4]/div/div"));
-        umnoj.click();
+        buttons.multiplyButton.click();
 
-        WebElement element3 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[4]/td[3]/div/div"));
-        element3.click();
+        buttons.Button3.click();
 
-        WebElement minus = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[4]/td[4]/div/div"));
-        minus.click();
+        buttons.minusButton.click();
 
-        WebElement element4 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[3]/td[1]/div/div"));
-        element4.click();
+        buttons.Button4.click();
 
-        WebElement element0 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[1]/div/div"));
-        element0.click();
+        buttons.Button0.click();
 
-        WebElement divide = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[2]/td[4]/div/div"));
-        divide.click();
+        buttons.divideButton.click();
 
-        WebElement element5 = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[3]/td[2]/div/div"));
-        element5.click();
+        buttons.Button5.click();
 
-        WebElement equals = driver.findElement(By.xpath ("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[3]/div/table[2]/tbody/tr[5]/td[3]/div/div"));
-        equals.click();
+        buttons.equalsButton.click();
 
         assertEquals(1, driver.findElements(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[2]/div/div")).size());
         assertEquals("(1 + 2) × 3 - 40 ÷ 5 =", driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div[1]/div/div/div[1]/div[2]/div[1]/div/span")).getText() );
